@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
   port     : '3306',
   user     : 'root',
   password : 'admin',
-  database : 'queveo'
+  database : 'queVeo'
 });
 
 module.exports = connection;
