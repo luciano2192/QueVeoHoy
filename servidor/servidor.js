@@ -21,4 +21,6 @@ app.listen(puerto, function () {
   console.log( "Escuchando en el puerto " + puerto );
 });
 
-app.get('/peliculas?', controlador.showAllMovies);
+app.get('/peliculas?', controlador.loadMovies);
+
+app.get('/generos', controlador.loadGenresMovies);
