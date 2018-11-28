@@ -27,4 +27,3 @@ CREATE TABLE pelicula (
 
 SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-1-peliculas.sql;
 
-
