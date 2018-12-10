@@ -23,7 +23,7 @@ app.listen(puerto, function () {
 
 app.route('/peliculas?')
    .get(controlador.loadMovies)
-   .get(controlador.filterMovies);
+   // .get(controlador.filterMovies);
 
 app.route('/generos')
    .get(controlador.loadGenresMovies);

@@ -3,7 +3,7 @@ CREATE DATABASE queVeo;
 USE queVeo;
 
 CREATE TABLE genero (
-    id INT AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(30),
     PRIMARY KEY (id)
 );
@@ -22,8 +22,9 @@ CREATE TABLE pelicula (
     trama VARCHAR(700),
     genero_id INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (genero_id) REFERENCES genero(id)
+    FOREIGN KEY (genero_id) REFERENCES genero(id) ON UPDATE CASCADE
 );
 
 SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-1-peliculas.sql;
 
+UPDATE pelicula INNER JOIN genero ON genero_id = genero.id SET genero_id = genero.id;
