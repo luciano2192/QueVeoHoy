@@ -26,3 +26,5 @@ app.get( '/peliculas?' , controlador.loadMovies );
 app.get( '/generos' , controlador.loadGenresMovies );
 
 app.get( '/peliculas/:id' , controlador.findMovieId );
+
+app.get( '/recomendacion?' , controlador.recommendedMovie );

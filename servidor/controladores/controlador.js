@@ -5,7 +5,7 @@ function loadMovies( req , res ) {
                         + 'FROM pelicula '
                         + 'INNER JOIN genero '
                         + 'ON pelicula.genero_id = genero.id ';
-
+    
     if( req.query.titulo ) { 
         moviesSql += 'AND titulo LIKE "%' + req.query.titulo + '%" ';
     } if( req.query.genero ) {
@@ -13,8 +13,8 @@ function loadMovies( req , res ) {
     } if( req.query.anio ) {
         moviesSql += 'AND anio = "' + req.query.anio + '" ';
     };
-    
-    connection.query( moviesSql, function( error , results , fields ) {
+
+    connection.query( moviesSql += 'LIMIT ' + (req.query.pagina -1) * 52 + ',' + req.query.cantidad, function( error , results , fields ) {
         if(error) {
             console.log('ERROR EN LA CONSULTA !', error.message);
             res.status(404).send('ERROR EN LA CONSULTA !');
@@ -51,7 +51,7 @@ function findMovieId( req , res ) {
                                 + 'INNER JOIN actor ON actor_id = actor.id '
                                 + 'INNER JOIN genero ON genero_id = genero.id '
                                 + 'WHERE pelicula.id = ' + req.params.id;
-    
+       
     connection.query( findIdSql , function( error , results , fields ) {
         if( error ) {
             console.log( 'ERROR EN LA CONSULTA !' , error.message );
@@ -68,8 +68,44 @@ function findMovieId( req , res ) {
     });            
 };
 
+function recommendedMovie( req , res ) {
+    var recomendationSql = 'SELECT pelicula.poster,pelicula.trama,pelicula.titulo,genero.nombre '
+                                + 'FROM pelicula '
+                                + 'INNER JOIN genero on genero_id = genero.id ';
+    
+    if( req.query.genero ) {
+        recomendationSql += 'AND genero = "' + req.query.genero + '" ';
+    };
+    
+    if( req.query.anio_inicio ) {
+        recomendationSql += 'AND anio_inicio = ' + req.query.anio_inicio;
+    };
+
+    if( req.query.anio_fin ) {
+        recomendationSql += 'AND anio_fin = ' + req.query.anio_fin;
+    };
+
+    if( req.query.puntuacion ) {
+        recomendationSql += 'AND puntuacion = ' + req.query.puntuacion;
+    };
+
+    connection.query( recomendationSql , function( error , results , fields ) {
+        if( error ) {
+            console.log( 'ERROR EN LA CONSULTA !' , error.message );
+            res.status( 404 ).send( 'ERROR EN LA CONSULTA !' );
+        }
+                                                        
+        var response = {
+            'peliculas' : results,
+        };
+                                                
+        res.send(JSON.stringify(response));
+    });                                
+};
+
 module.exports = {
     'loadMovies': loadMovies,
     'loadGenresMovies': loadGenresMovies,
     'findMovieId': findMovieId,
+    'recommendedMovie': recommendedMovie
 };
