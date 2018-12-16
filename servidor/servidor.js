@@ -21,10 +21,10 @@ app.listen(puerto, function () {
   console.log( "Escuchando en el puerto " + puerto );
 });
 
-app.get( '/peliculas?' , controlador.loadMovies );
+app.get( '/peliculas' , controlador.loadMovies );
 
 app.get( '/generos' , controlador.loadGenresMovies );
 
 app.get( '/peliculas/:id' , controlador.findMovieId );
 
-app.get( '/recomendacion?' , controlador.recommendedMovie );
+app.get( 'peliculas/recomendacion' , controlador.recommendedMovie );
