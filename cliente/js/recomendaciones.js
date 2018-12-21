@@ -63,7 +63,6 @@ function ControladorRecomendaciones() {
         $(".botones-resultado .ver-mas").click(function() {
             var id = (self.pelicula_actual).id;
             window.location.href = "info.html?id=" + id;
-            console.log(id);
         });
 
         //se le asigna funcionalidad al boton "Otra opcion" que se va a mostrar debajo de la pelicula recomendada.

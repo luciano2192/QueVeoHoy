@@ -23,8 +23,8 @@ app.listen(puerto, function () {
 
 app.get( '/peliculas' , controlador.loadMovies );
 
-app.get( '/generos' , controlador.loadGenresMovies );
+app.get( '/peliculas/recomendacion' , controlador.recommendedMovie );
 
 app.get( '/peliculas/:id' , controlador.findMovieId );
 
-app.get( 'peliculas/recomendacion' , controlador.recommendedMovie );
+app.get( '/generos' , controlador.loadGenresMovies );

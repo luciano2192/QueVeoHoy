@@ -8,7 +8,7 @@ CREATE TABLE genero (
     PRIMARY KEY (id)
 );
 
-SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-2-generos.sql;
+-- SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-2-generos.sql;
 
 CREATE TABLE actor (
     id INT NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE actor_pelicula (
     PRIMARY KEY (id)
 );
 
-SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-3-actores.sql;
+-- SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-3-actores.sql;
 
 CREATE TABLE pelicula (
     id INT AUTO_INCREMENT,
@@ -40,4 +40,4 @@ CREATE TABLE pelicula (
     FOREIGN KEY (genero_id) REFERENCES genero(id)
 );
 
-SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-1-peliculas.sql;
+-- SOURCE C:/Users/Lucho/Documents/ACAMICA/JS/LucianoGreco-QueVeoHoy/scripts/script-paso-1-peliculas.sql;
